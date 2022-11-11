@@ -7,7 +7,7 @@ I want to use it in my .NET code. So I made this wapper code using `net6.0` as b
 
 ## Quick start
 
-### C# Code
+### C# Code Examples
 
 This [test code](./src/AmgclTest/Program.cs) use `AmgclSharp` library that is wrapper of `lib\amgcl.h`.
 
@@ -76,13 +76,6 @@ amgcl_params_destroy(prm);
 
 std::vector<double> x(n, 0);
 conv_info cnv = amgcl_solver_solve(solver, rhs.data(), x.data());
-
-// Solve same problem again, but explicitly provide the matrix this time:
-std::fill(x.begin(), x.end(), 0);
-cnv = amgcl_solver_solve_mtx(
-    solver, ptr.data(), col.data(), val.data(),
-    rhs.data(), x.data()
-    );
 
 std::cout << "Iterations: " << cnv.iterations << std::endl
     << "Error:      " << cnv.residual   << std::endl;
